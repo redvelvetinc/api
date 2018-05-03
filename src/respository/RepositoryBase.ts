@@ -1,4 +1,4 @@
-import { Document, Model } from 'mongoose'
+import { Document, Model, Types } from 'mongoose'
 import { IRead } from './interfaces/Read';
 import { IWrite } from './interfaces/Write';
 

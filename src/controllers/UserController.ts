@@ -1,22 +1,22 @@
-import { IHeroModel, IHero } from './../models/interfaces/HeroModel';
 import { Request, Response, NextFunction } from 'express';
 import { IBaseController } from "./interfaces/BaseController";
-import { Hero } from '../models/Hero';
+import { IUserModel, IUser } from '../models/interfaces/UserModel';
+import { User } from '../models/User';
 
-export class HeroController implements IBaseController<IHeroModel>{
+export class UserController implements IBaseController<IUserModel>{
 
   async retrieve(req: Request, res: Response, next: NextFunction) {
     try {
-      const heroes: IHero[] = await Hero.find({})
-      res.json({ success: true, data: heroes });
+      const users: IUser[] = await User.find({})
+      res.json({ success: true, data: users });
     } catch (err) {
-     next(err)
+      next(err)
     }
   }
   async findById(req: Request, res: Response, next: NextFunction) {
     try {
-      const hero: IHero|null = await Hero.findById(req.params._id);
-      res.json({ success: true, data: hero });
+      const user: IUser | null = await User.findById(req.params._id);
+      res.json({ success: true, data: user });
     } catch (err) {
       next(err);
     }
