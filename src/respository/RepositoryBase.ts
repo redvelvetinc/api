@@ -8,19 +8,28 @@ export class RepositoryBase<T extends Document> implements IRead<T>, IWrite<T> {
   constructor(model: any) {
     this.model = model;
   }
-  async retrieve(): Promise<T> {
-    throw new Error("Method not implemented.");
+
+  private toObjectId(_id: string): Types.ObjectId {
+    return Types.ObjectId.createFromHexString(_id);
   }
-  findById(id: string): Promise<T> {
-    throw new Error("Method not implemented.");
+
+  retrieve = (): Promise<T> => {
+    return this.model.find({});
   }
-  create(item: T): Promise<T> {
-    throw new Error("Method not implemented.");
+
+  findById = (_id: string): Promise<T> => {
+    return this.model.findById({ _id });
   }
-  update(_id: Types.ObjectId, item: T): Promise<T> {
-    throw new Error("Method not implemented.");
+
+  create = (item: T): Promise<T> => {
+    return this.model.create(item);
   }
-  delete(_id: string): Promise<T> {
-    throw new Error("Method not implemented.");
+
+  update = (_id: Types.ObjectId, item: T): Promise<T> => {
+    return this.model.update({ _id }, item);
+  }
+
+  delete = (_id: Types.ObjectId): Promise<T> => {
+    return this.model.remove({ _id });
   }
 }
