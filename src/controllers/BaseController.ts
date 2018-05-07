@@ -1,7 +1,7 @@
 import { IReadController } from "./interfaces/ReadController";
 import { IWriteController } from "./interfaces/WriteController";
 import { Request, Response, NextFunction } from 'express';
-import { Model, Document } from "mongoose";
+import { Model, Document, Types } from "mongoose";
 
 
 export class BaseController<T extends Document> implements IReadController, IWriteController {
@@ -9,12 +9,9 @@ export class BaseController<T extends Document> implements IReadController, IWri
 
   constructor(model: Model<Document>) {
     this.model = model;
-    this.retrieve =this.retrieve.bind(this);
-    this.findById =this.findById.bind(this);
-    this.create =this.create.bind(this);
   }
 
-  async retrieve(req: Request, res: Response, next: NextFunction) {
+  retrieve = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const collection = await this.model.find({});
       res.json({ success: true, data: collection });
@@ -23,30 +20,46 @@ export class BaseController<T extends Document> implements IReadController, IWri
     }
   }
 
-  async findById(req: Request, res: Response, next: NextFunction) {
+  findById = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { _id: id } = req.params;
-      const result = await this.model.findById(id);
-      res.json({ success: true, data: result });
+      const { _id } = req.params;
+      const data = await this.model.findById(_id);
+      res.json({ success: true, data });
     } catch (err) {
       next(err);
     }
   }
 
-  async create(req: Request, res: Response, next: NextFunction) {
+  create = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const object = await this.model.create(req.body);
-      res.status(201).json({ success: true, data: object });
+      const data = await this.model.create(req.body);
+      res.json({ success: true, data });
     } catch (err) {
       next(err);
     }
   }
 
-  update(req: Request, res: Response, next: NextFunction) {
-    throw new Error("Method not implemented.");
+  update = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { _id } = req.params;
+      const data = await this.model.update({ _id }, req.body);
+      res.json({ success: true, data });
+    } catch (err) {
+      next(err);
+    }
   }
 
-  delete(req: Request, res: Response, next: NextFunction) {
-    throw new Error("Method not implemented.");
+  delete = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { _id } = req.params;
+      const data = await this.model.remove({ _id: this.toObjectId(_id) });
+      res.status(204).json();
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  private toObjectId(_id: string): Types.ObjectId {
+    return Types.ObjectId.createFromHexString(_id);
   }
 }
