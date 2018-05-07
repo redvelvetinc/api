@@ -14,6 +14,9 @@ class HeroRouter {
   private initialize() : void {
     this.router.get('/', this.controller.retrieve);
     this.router.get('/:_id', this.controller.findById);
+    this.router.post('/', this.controller.create);
+    this.router.put('/:_id', this.controller.update);
+    this.router.delete('/:_id', this.controller.delete);
   }
 }
 

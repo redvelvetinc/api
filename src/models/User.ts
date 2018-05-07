@@ -7,7 +7,7 @@ const UserSchema = new Schema({
     type: String,
   },
   email: {
-    required: true,
+    required: 'Email cannot be empty.',
     type: String,
   },
   location: {

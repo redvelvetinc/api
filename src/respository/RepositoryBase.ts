@@ -3,12 +3,12 @@ import { IRead } from './interfaces/Read';
 import { IWrite } from './interfaces/Write';
 
 export class RepositoryBase<T extends Document> implements IRead<T>, IWrite<T> {
-  private model: Model<Document>;
+  private model: any;
 
-  constructor(model: Model<Document>) {
+  constructor(model: any) {
     this.model = model;
   }
-  retrieve(): Promise<T> {
+  async retrieve(): Promise<T> {
     throw new Error("Method not implemented.");
   }
   findById(id: string): Promise<T> {
