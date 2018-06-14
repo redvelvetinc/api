@@ -1,5 +1,9 @@
 import { Router, Request, Response, NextFunction } from 'express';
-class Root {
+import HeroesService from '../../services/HeroesService';
+
+const Heroes = HeroesService();
+
+class HeroRouter {
   public router: Router
 
   constructor() {
@@ -7,13 +11,13 @@ class Root {
     this.initialize();
   }
 
-  private initialize(): void {
+  private initialize() : void {
     this.router.get('/', this.getAll);
   }
 
   public getAll(req: Request, res: Response, next: NextFunction) {
-    res.json({message: 'Welcome!'});
+    res.json(Heroes);
   }
 }
 
-export default new Root();
+export default new HeroRouter();

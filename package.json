@@ -6,8 +6,10 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "yarn build",
+    "dev": "concurrently -s first -c blue,green -n \"tsc,nodemon\" -k \"yarn watch\" \"yarn nodemon\"",
     "build": "tsc",
     "watch": "tsc -w",
+    "nodemon": "nodemon ./dist/bootstrap.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Rafaell Lycan <sonny.webdsg@gmail.com>",
@@ -18,9 +20,7 @@
     "cors": "^2.8.4",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
-    "helmet": "^3.12.0",
-    "morgan": "^1.9.0",
-    "typescript": "^2.8.1"
+    "helmet": "^3.12.0"
   },
   "devDependencies": {
     "@types/body-parser": "^1.16.8",
@@ -31,6 +31,11 @@
     "@types/express": "^4.11.1",
     "@types/helmet": "^0.0.37",
     "@types/morgan": "^1.7.35",
-    "nodemon": "^1.17.3"
+    "@types/winston": "^2.3.9",
+    "concurrently": "^3.5.1",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.17.3",
+    "typescript": "^2.8.3",
+    "winston": "^2.4.2"
   }
 }
