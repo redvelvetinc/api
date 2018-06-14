@@ -1,0 +1,19 @@
+{
+  "name": "cabaret-api",
+  "description": "",
+  "scripts": {},
+  "env": {
+    "NODE_ENV": "production",
+    "MONGODB_URI": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "addons": [],
+  "buildpacks": [ { "url": "heroku/nodejs"} ]
+}
