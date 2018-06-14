@@ -22,7 +22,10 @@
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "helmet": "^3.12.0",
-    "mongoose": "^5.0.16"
+    "mongoose": "^5.0.16",
+    "morgan": "^1.9.0",
+    "typescript": "^2.8.3",
+    "winston": "^2.4.2"
   },
   "devDependencies": {
     "@types/body-parser": "^1.16.8",
@@ -36,9 +39,6 @@
     "@types/morgan": "^1.7.35",
     "@types/winston": "^2.3.9",
     "concurrently": "^3.5.1",
-    "morgan": "^1.9.0",
-    "nodemon": "^1.17.3",
-    "typescript": "^2.8.3",
-    "winston": "^2.4.2"
+    "nodemon": "^1.17.3"
   }
 }
