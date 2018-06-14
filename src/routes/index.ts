@@ -1,4 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express';
+import { version } from '../../package.json';
+
 class Root {
   public router: Router
 
@@ -12,7 +14,11 @@ class Root {
   }
 
   public index(req: Request, res: Response, next: NextFunction) {
-    res.json({message: 'Welcome!'});
+    res.json({
+      message: 'Cabaret API - Red Velvet Inc.',
+      status: 'online',
+      version
+    });
   }
 }
 

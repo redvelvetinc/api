@@ -52,7 +52,7 @@ export class BaseController<T extends Document> implements IReadController, IWri
   delete = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { _id } = req.params;
-      const data = await this.model.remove({ _id: this.toObjectId(_id) });
+      await this.model.remove({ _id: this.toObjectId(_id) });
       res.status(204).json();
     } catch (err) {
       next(err);
