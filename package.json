@@ -8,6 +8,7 @@
     "postinstall": "yarn build",
     "dev": "concurrently -s first -c blue,green -n \"tsc,nodemon\" -k \"yarn watch\" \"yarn nodemon\"",
     "build": "tsc",
+    "start": "yarn ./dist/bootstrap.js",
     "watch": "tsc -w",
     "nodemon": "nodemon ./dist/bootstrap.js",
     "test": "echo \"Error: no test specified\" && exit 1"
