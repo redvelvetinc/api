@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "strictNullChecks": true,
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "lib": ["es7"],
     "target": "es6",
     "module": "commonjs",
     "rootDir": "./src/",
