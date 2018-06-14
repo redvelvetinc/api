@@ -7,9 +7,9 @@ import App from './app.js';
 
 // Load the env variables
 if (env.NODE_ENV === 'PROD') {
-  config({ path: path.resolve(__dirname, '..', 'config', '.env.prod') });
+  config({ path: path.resolve(__dirname, '..', '.env.prod') });
 } else {
-  config({ path: path.resolve(__dirname, '..', 'config', '.env.dev') });
+  config({ path: path.resolve(__dirname, '..', '.env.dev') });
 }
 
 // Enables cluster

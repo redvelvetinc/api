@@ -8,10 +8,10 @@ class Root {
   }
 
   private initialize(): void {
-    this.router.get('/', this.getAll);
+    this.router.get('/', this.index);
   }
 
-  public getAll(req: Request, res: Response, next: NextFunction) {
+  public index(req: Request, res: Response, next: NextFunction) {
     res.json({message: 'Welcome!'});
   }
 }
