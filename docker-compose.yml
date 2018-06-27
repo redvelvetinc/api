@@ -1,0 +1,30 @@
+version: '3'
+
+# Define the services/containers to be run
+services:
+  web: # Node/TypeScript App
+    restart: always
+    build: .
+    command: yarn dev
+    ports: #specify ports forewarding
+      - 3000:3000
+      - 9222:9222
+    environment:
+      - NODE_ENV=development
+      - MONGODB_URI=mongodb://mongodb:27017/app_development
+    volumes:
+      - ./dist:/app/dist
+    depends_on:
+      - mongodb
+
+  mongodb: # MongoDB
+    image: mongo:latest
+    restart: always
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    volumes:
+      - ./data/db:/data/db
+    ports: #specify ports forewarding
+        - "27017:27017"
+    command: mongod --smallfiles --logpath=/dev/null # --quiet
