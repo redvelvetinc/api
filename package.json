@@ -10,7 +10,7 @@
     "build": "tsc",
     "start": "node ./dist/bootstrap.js",
     "watch": "tsc -w",
-    "nodemon": "nodemon ./dist/bootstrap.js",
+    "nodemon": "nodemon --watch ./dist --inspect=0.0.0.0:9222 --nolazy ./dist/bootstrap.js",
     "lint": "eslint src --ext ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
