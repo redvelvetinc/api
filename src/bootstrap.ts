@@ -1,21 +1,20 @@
 import * as path from 'path';
+import * as dotenv from 'dotenv';
 import * as cluster from 'cluster';
-import { config } from 'dotenv';
 import { cpus } from 'os';
 import { env } from 'process';
 import App from './app.js';
 
 // Load the env variables
 if (env.NODE_ENV === 'PROD') {
-  config({ path: path.resolve(__dirname, '..', '.env.prod') });
+  dotenv.config({ path: path.resolve(__dirname, '..', 'config', '.env.prod') });
 } else {
-  config({ path: path.resolve(__dirname, '..', '.env.dev') });
+  dotenv.config({ path: path.resolve(__dirname, '..', 'config', '.env.dev') });
 }
-
-// Enables cluster
 
 const port = env.PORT || 3000;
 
+// Enables cluster
 if (cluster.isMaster) {
   const numCPUs = cpus().length;
   console.log(' Fork %s worker(s) from master', cpus.length)
