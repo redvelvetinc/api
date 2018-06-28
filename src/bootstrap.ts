@@ -1,38 +1,31 @@
 import * as path from 'path';
 import * as dotenv from 'dotenv';
-import * as cluster from 'cluster';
 import { cpus } from 'os';
+import * as throng from 'throng';
 import { env } from 'process';
 import App from './app.js';
 
+const isProduction = env.NODE_ENV === 'PRODUCTION';
+
 // Load the env variables
-if (env.NODE_ENV === 'PROD') {
+if (isProduction) {
   dotenv.config({ path: path.resolve(__dirname, '..', 'config', '.env.prod') });
 } else {
   dotenv.config({ path: path.resolve(__dirname, '..', 'config', '.env.dev') });
 }
 
+const WORKERS = isProduction
+  ? env.WEB_CONCURRENCY ||  cpus().length
+  : 1;
+
 const port = env.PORT || 3000;
 
-// Enables cluster
-if (cluster.isMaster) {
-  const numCPUs = cpus().length;
-  console.log(' Fork %s worker(s) from master', cpus.length)
-  for (const cpu of cpus()) {
-    cluster.fork()
-  }
-  cluster.on('online', (worker) => {
-    console.log('Worker is running on %s pid', worker.process.pid)
-  })
-  cluster.on('exit', (worker, code, signal) => {
-    console.log('Worker with %s died with code: s%, and signal: s%', worker.process.pid, code, signal);
-  })
-} else if (cluster.isWorker) {
-  console.log(`worker (${cluster.worker.process.pid}) is now listening to http://localhost:${port}`)
+throng(WORKERS, (id: any) => {
+  console.log(`worker ${id} is now listening to http://localhost:${port}`);
   new App().start().listen(port)
     .on('listening', onListening)
     .on('error', onError);
-}
+});
 
 // Event listener for HTTP server 'listening' event.
 function onListening() {

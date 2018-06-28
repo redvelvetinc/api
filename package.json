@@ -8,9 +8,9 @@
     "postinstall": "yarn build",
     "dev": "concurrently -s first -c blue,green -n \"tsc,nodemon\" -k \"yarn watch\" \"yarn nodemon\"",
     "build": "tsc",
-    "start": "node ./dist/bootstrap.js",
+    "start": "node --optimize_for_size --max_old_space_size=460 --gc_interval=100 ./dist/bootstrap.js",
     "watch": "tsc -w",
-    "nodemon": "nodemon --watch ./dist --inspect=0.0.0.0:9222 --nolazy ./dist/bootstrap.js",
+    "nodemon": "nodemon --watch ./dist ./dist/bootstrap.js",
     "lint": "eslint src --ext ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,6 +25,7 @@
     "helmet": "^3.12.0",
     "mongoose": "^5.0.16",
     "morgan": "^1.9.0",
+    "throng": "^4.0.0",
     "typescript": "^2.8.3",
     "winston": "^2.4.2"
   },
@@ -39,6 +40,7 @@
     "@types/mocha": "^5.2.2",
     "@types/mongoose": "^5.0.10",
     "@types/morgan": "^1.7.35",
+    "@types/throng": "^4.0.2",
     "@types/winston": "^2.3.9",
     "concurrently": "^3.5.1",
     "eslint": "^4.19.1",
