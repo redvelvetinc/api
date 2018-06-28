@@ -1,5 +1,3 @@
-import * as path from 'path';
-import * as fs from 'fs';
 import * as http from 'http';
 import * as express from 'express';
 import * as morgan from 'morgan';
@@ -32,7 +30,46 @@ export default class App {
   public start() {
     this.middleware();
     this.routes();
+    // await this.server.listen()
+    if (env.NODE_ENV !== 'test') {
+      // this.monitor();
+      // this.metrics();
+    }
     return this.server;
+  }
+
+  private monitor() {
+    console.log('--->monitor')
+    const statusMonitor = require('express-status-monitor');
+    const auth = require('http-auth');
+
+    const monitor = statusMonitor({
+      title: 'Personalizer Service',
+      path: '/metrics/status',
+      spans: [{
+        interval: 1,
+        retention: 60,
+      }, {
+        interval: 15,
+        retention: 60,
+      }, {
+        interval: 60,
+        retention: 60,
+      }],
+    });
+
+    const basic = auth.basic({ realm: 'Metrics Status' }, (user: string, pass: string, callback: Function) => {
+      callback(!env.METRICS_USERNAME || (user === env.METRICS_USERNAME && pass === env.METRICS_PASSWORD));
+    });
+
+    this.express.get('/metrics/status', auth.connect(basic), monitor.pageRoute);
+  }
+
+  private metrics() {
+    console.log('--->metrics')
+    const promBundle = require('express-prom-bundle');
+    const metricsMiddleware = promBundle({});
+    this.express.use(metricsMiddleware);
   }
 
   // Configure Express middleware.

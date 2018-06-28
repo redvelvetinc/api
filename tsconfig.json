@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node",
-    "lib": ["es7"],
+    "lib": ["esnext"],
     "target": "es6",
     "module": "commonjs",
+    "moduleResolution": "node",
     "rootDir": "./src/",
     "outDir": "./dist/",
     "sourceMap": true,

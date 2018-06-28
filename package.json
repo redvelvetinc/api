@@ -22,11 +22,15 @@
     "cors": "^2.8.4",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
+    "express-prom-bundle": "^3.3.0",
+    "express-status-monitor": "^1.1.2",
     "helmet": "^3.12.0",
+    "http-auth": "^3.2.3",
     "mongoose": "^5.0.16",
     "morgan": "^1.9.0",
     "throng": "^4.0.0",
-    "typescript": "^2.8.3",
+    "tslint": "^5.10.0",
+    "typescript": "^2.9.2",
     "winston": "^2.4.2"
   },
   "devDependencies": {
@@ -50,6 +54,7 @@
     "mocha": "^5.2.0",
     "nodemon": "^1.17.3",
     "supertest": "^3.1.0",
+    "tslint-eslint-rules": "^5.3.1",
     "typescript-eslint-parser": "^16.0.0"
   }
 }
