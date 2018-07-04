@@ -1,25 +1,10 @@
-import { Router, Request, Response, NextFunction } from 'express';
-import { version } from '../../package.json';
+import { Router } from "express";
+import health from "./health";
+import v1 from "./v1";
 
-class Root {
-  public router: Router
+const router = Router();
 
-  constructor() {
-    this.router = Router();
-    this.initialize();
-  }
+router.use("/", health);
+router.use("/v1", v1);
 
-  private initialize(): void {
-    this.router.get('/', this.index);
-  }
-
-  public index(req: Request, res: Response, next: NextFunction) {
-    res.json({
-      message: 'Cabaret API - Red Velvet Inc.',
-      status: 'online',
-      version
-    });
-  }
-}
-
-export default new Root();
+export default router;

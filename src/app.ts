@@ -7,6 +7,9 @@ import * as cors from 'cors';
 import * as helmet from 'helmet';
 import * as bodyParser from 'body-parser';
 import * as compression from 'compression';
+import { env } from 'process';
+import routes from './routes';
+import V1 from './api/v1';
 
 import { notFoundHandler, errorHandler } from './middlewares/errorHandler';
 
@@ -46,30 +49,11 @@ export default class App {
 
   // Configure API endpoints.
   private routes(): void {
-    const routes: Array<RouteItem> = this.list(path.join(__dirname, 'routes'));
+    this.express.use(routes);
 
-    for (const route of routes) {
-      const resource = require(route.filename).default;
-      this.express.use(route.url, resource.router);
-    }
+    this.express.use('/v1/', V1);
 
     this.express.use(notFoundHandler);
     this.express.use(errorHandler);
-  }
-
-  private list(dir: string, filelist: Array<RouteItem> = []): Array<RouteItem> {
-    return fs.readdirSync(dir)
-      .reduce((routes, file) => {
-        if (fs.statSync(path.join(dir, file)).isDirectory()) {
-          return this.list(path.join(dir, file), filelist)
-        }
-        if (file.slice(-3) === '.js') {
-          const filename = path.join(dir, file);
-          const namespace = dir.split('routes')[1];
-          const resource = !file.includes('index') ? file.slice(0, -3) : '';
-          filelist.push({ filename, url: `${namespace}/${resource}` });
-        }
-        return routes;
-      }, filelist);
   }
 }
