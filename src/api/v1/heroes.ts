@@ -20,4 +20,4 @@ class HeroRouter {
   }
 }
 
-export default new HeroRouter();
+export default new HeroRouter().router;

@@ -20,4 +20,4 @@ class UserRouter {
   }
 }
 
-export default new UserRouter();
+export default new UserRouter().router;
