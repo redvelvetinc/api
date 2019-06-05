@@ -1,4 +1,6 @@
 # Cabaret API
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fredvelvetinc%2Fapi.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fredvelvetinc%2Fapi?ref=badge_shield)
+
 
 ## Status
 
@@ -39,3 +41,7 @@ But for a faster edit/compile/debug cycle we will use a more sophisticated appro
 - https://github.com/Thavarajan/Mangoose-Typescript-With-Repository-Pattern
 - https://github.com/vladotesanovic/typescript-mongoose-express/blob/master/server/routes/author/author.ts
 - https://github.com/Microsoft/vscode-recipes/tree/master/Docker-TypeScript
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fredvelvetinc%2Fapi.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fredvelvetinc%2Fapi?ref=badge_large)
