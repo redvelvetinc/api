@@ -5,6 +5,10 @@ import { BaseRepository } from '../respository/base/BaseRepository';
 import { IReadController } from './interfaces/ReadController';
 import { IWriteController } from './interfaces/WriteController';
 
+interface ResourceParams {
+  _id?: string;
+}
+
 export class BaseController<T extends Document> implements IReadController, IWriteController {
   private repository: BaseRepository<T>;
 
@@ -23,8 +27,8 @@ export class BaseController<T extends Document> implements IReadController, IWri
 
   findById = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { _id } = req.params;
-      const data = await this.repository.findById(_id);
+      const { _id } = req.params as ResourceParams;
+      const data = await this.repository.findById(_id as string);
       res.json({ success: true, data });
     } catch (err) {
       next(err);
@@ -42,8 +46,8 @@ export class BaseController<T extends Document> implements IReadController, IWri
 
   update = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { _id } = req.params;
-      const data = await this.repository.update(_id, req.body);
+      const { _id } = req.params as ResourceParams;
+      const data = await this.repository.update(_id as string, req.body);
       res.json({ success: true, data });
     } catch (err) {
       next(err);
@@ -52,8 +56,8 @@ export class BaseController<T extends Document> implements IReadController, IWri
 
   delete = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { _id } = req.params;
-      await this.repository.delete(_id);
+      const { _id } = req.params as ResourceParams;
+      await this.repository.delete(_id as string);
       res.status(204).json();
     } catch (err) {
       next(err);
