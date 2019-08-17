@@ -1,13 +1,13 @@
-import * as express from "express";
-import * as morgan from "morgan";
-import * as cors from "cors";
-import * as helmet from "helmet";
-import * as bodyParser from "body-parser";
-import * as compression from "compression";
+import * as bodyParser from 'body-parser';
+import * as compression from 'compression';
+import * as cors from 'cors';
+import * as express from 'express';
+import * as helmet from 'helmet';
+import * as morgan from 'morgan';
 
-import { notFoundHandler, errorHandler } from "./middlewares/errorHandler";
-import routes from "./routes";
-import MongoService from "./services/MongoService";
+import { errorHandler, notFoundHandler } from './middlewares/errorHandler';
+import routes from './routes';
+import MongoService from './services/MongoService';
 
 export class Application {
   server: express.Application;
@@ -17,7 +17,7 @@ export class Application {
     this.setup();
   }
 
-  public setup() {
+  setup(): void {
     this.database();
     this.middleware();
     this.routes();
@@ -36,7 +36,7 @@ export class Application {
     this.server.use(bodyParser.json());
 
     this.server.use(compression());
-    this.server.use(morgan("dev"));
+    this.server.use(morgan('dev'));
     this.server.use(cors());
   }
 

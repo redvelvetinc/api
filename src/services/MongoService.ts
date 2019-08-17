@@ -1,5 +1,7 @@
-import { connect, Mongoose } from "mongoose";
-import config from "../config";
+import { connect, Mongoose } from 'mongoose';
+
+import config from '../config';
+import logger from '../utils/logger';
 
 export default class MongoService {
   static instance: Mongoose;
@@ -11,19 +13,19 @@ export default class MongoService {
   static async connect(): Promise<void> {
     try {
       if (!config.mongoUri) {
-        throw new Error("Mongo URI not defined.");
+        throw new Error('Mongo URI not defined.');
       }
 
       this.instance = await connect(
         config.mongoUri,
-        { useNewUrlParser: true }
+        { useNewUrlParser: true },
       );
 
-      this.instance.connection.once("open", () => {
-        console.log("Connected to MongoDB.");
+      this.instance.connection.once('open', () => {
+        logger.info('Connected to MongoDB.');
       });
     } catch (err) {
-      console.error(err);
+      logger.error(err);
     }
   }
 }

@@ -1,26 +1,27 @@
-import { Schema, Document, model } from "mongoose";
-import { IMailing } from "./interfaces/IMailing";
+import { Document, model, Schema } from 'mongoose';
+
+import { IMailing } from './interfaces/IMailing';
 
 export interface IMailingModel extends IMailing, Document {}
 
 const UserSchema = new Schema(
   {
     name: {
-      type: String
+      type: String,
     },
     email: {
-      required: "Email cannot be empty.",
-      type: String
+      required: 'Email cannot be empty.',
+      type: String,
     },
     location: {
-      type: String
+      type: String,
     },
     origin: {
       type: String,
-      default: "*"
-    }
+      default: '*',
+    },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
-export const Mailing = model<IMailingModel>("mailing", UserSchema);
+export const Mailing = model<IMailingModel>('mailing', UserSchema);

@@ -1,10 +1,9 @@
-import { Document, Types, Model } from "mongoose";
+import { Document, Model, Types } from 'mongoose';
 
-import { IRead } from "./../interfaces/Read";
-import { IWrite } from "../interfaces/Write";
+import { IWrite } from '../interfaces/Write';
+import { IRead } from './../interfaces/Read';
 
-export abstract class BaseRepository<T extends Document>
-  implements IRead<T>, IWrite<T> {
+export abstract class BaseRepository<T extends Document> implements IRead<T>, IWrite<T> {
   private model: any;
 
   constructor(model: any) {

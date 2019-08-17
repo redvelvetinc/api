@@ -1,11 +1,11 @@
-import { IReadController } from "./interfaces/ReadController";
-import { IWriteController } from "./interfaces/WriteController";
-import { Request, Response, NextFunction } from "express";
-import { Document } from "mongoose";
-import { BaseRepository } from "../respository/base/BaseRepository";
+import { NextFunction, Request, Response } from 'express';
+import { Document } from 'mongoose';
 
-export class BaseController<T extends Document>
-  implements IReadController, IWriteController {
+import { BaseRepository } from '../respository/base/BaseRepository';
+import { IReadController } from './interfaces/ReadController';
+import { IWriteController } from './interfaces/WriteController';
+
+export class BaseController<T extends Document> implements IReadController, IWriteController {
   private repository: BaseRepository<T>;
 
   constructor(repository: BaseRepository<T>) {

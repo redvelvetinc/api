@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express'
+import { NextFunction, Request, Response } from 'express';
 
 export interface IReadController {
   retrieve(req: Request, res: Response, next: NextFunction): any;
