@@ -17,6 +17,9 @@ RUN npm i -g pm2
 # Install dependecies
 RUN yarn install
 
+# Build TS files
+RUN yarn build
+
 # Expose the port the app runs in
 EXPOSE 3000
 
