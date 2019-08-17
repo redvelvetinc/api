@@ -1,15 +1,13 @@
-import * as winston from "winston";
-import config from "../config";
+import { createLogger, format, transports } from 'winston';
 
-const logger = new winston.Logger({
-  transports: [
-    new winston.transports.Console({
-      level: config.isProduction ? "info" : "debug",
-      timestamp: function() {
-        return new Date().toISOString();
-      }
-    })
-  ]
+import config from '../config';
+
+const { combine, colorize, json, simple, timestamp } = format;
+
+const logger = createLogger({
+  level: config.isProduction ? 'info' : 'debug',
+  format: combine(colorize(), json(), simple(), timestamp()),
+  transports: [new transports.Console()],
 });
 
 export default logger;
