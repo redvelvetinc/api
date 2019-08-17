@@ -1,13 +1,12 @@
-import * as winston from 'winston';
-
-const level = process.env.LOG_LEVEL || 'debug';
+import * as winston from "winston";
+import config from "../config";
 
 const logger = new winston.Logger({
   transports: [
     new winston.transports.Console({
-      level: level,
-      timestamp: function () {
-        return (new Date()).toISOString();
+      level: config.isProduction ? "info" : "debug",
+      timestamp: function() {
+        return new Date().toISOString();
       }
     })
   ]

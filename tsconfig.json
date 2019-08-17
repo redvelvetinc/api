@@ -9,9 +9,7 @@
     "sourceMap": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
-    "pretty": true,
-    "strict": true,
-    "types": ["node", "mocha"]
+    "strict": true
   },
   "exclude": [
     "node_modules"
