@@ -1,5 +1,6 @@
 import { Document, model, Schema } from 'mongoose';
 
+import config from '../config';
 import { IAccount } from './interfaces/IAccount';
 
 enum AccountTypes {
@@ -28,6 +29,16 @@ const UserSchema = new Schema(
     accountType: {
       type: String,
       enum: [AccountTypes.ADMIN, AccountTypes.AGENCY, AccountTypes.SINGLE],
+      default: AccountTypes.SINGLE,
+      validate: {
+        validator: (value: string): boolean => {
+          if (value !== AccountTypes.ADMIN) {
+            return true;
+          }
+
+          return config.acceptAdminRegistration;
+        },
+      },
     },
     isEmailVerified: {
       type: Boolean,
@@ -35,7 +46,6 @@ const UserSchema = new Schema(
     },
     token: {
       type: String,
-      unique: true,
     },
     personalProfile: {
       name: {
@@ -45,6 +55,16 @@ const UserSchema = new Schema(
       birthDate: {
         required: 'Birth Date cannot be empty.',
         type: Date,
+        validate: {
+          validator: (value: Date): boolean => {
+            value.setFullYear(value.getFullYear() + 18);
+            const currentTime = new Date();
+            currentTime.setHours(0, 0, 0, 0);
+
+            return value.getTime() <= currentTime.getTime();
+          },
+          message: (): string => 'You must be 18 years old.',
+        },
       },
       cpf: String,
       mobile: String,
@@ -53,4 +73,4 @@ const UserSchema = new Schema(
   { timestamps: true },
 );
 
-export const Mailing = model<IAccountModel>('mailing', UserSchema);
+export const Account = model<IAccountModel>('account', UserSchema);
