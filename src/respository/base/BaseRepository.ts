@@ -1,32 +1,44 @@
-import { Document } from 'mongoose';
+import { Document, Model } from 'mongoose';
 
 import { IWrite } from '../interfaces/Write';
 import { IRead } from './../interfaces/Read';
 
-export abstract class BaseRepository<T extends Document> implements IRead<T>, IWrite<T> {
-  private model: any;
+const hiddenAttrs = {
+  __v: 0,
+  createdAt: 0,
+  updatedAt: 0,
+};
 
-  constructor(model: any) {
+export abstract class BaseRepository<T extends Document> implements IRead<T>, IWrite<T> {
+  private model: Model<T>;
+
+  constructor(model: Model<T>) {
     this.model = model;
   }
 
-  retrieve = (): Promise<T[]> => {
-    return this.model.find({});
+  retrieve = async (): Promise<T[]> => {
+    return this.model
+      .find()
+      .select(hiddenAttrs)
+      .lean();
   };
 
-  findById = (_id: string): Promise<T> => {
-    return this.model.findById({ _id });
+  findById = async (_id: string): Promise<T | null> => {
+    return this.model
+      .findById(_id)
+      .select(hiddenAttrs)
+      .lean();
   };
 
-  create = (item: T): Promise<T> => {
+  create = async (item: T): Promise<T> => {
     return this.model.create(item);
   };
 
-  update = (_id: string, item: T): Promise<T> => {
+  update = async (_id: string, item: T): Promise<T | null> => {
     return this.model.findByIdAndUpdate({ _id }, item);
   };
 
-  delete = (_id: string): Promise<T> => {
+  delete = async (_id: string): Promise<T | null> => {
     return this.model.findByIdAndRemove({ _id });
   };
 }
