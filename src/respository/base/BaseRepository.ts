@@ -30,6 +30,20 @@ export abstract class BaseRepository<T extends Document> implements IRead<T>, IW
       .lean();
   };
 
+  findWhere = async (query: any): Promise<T | null> => {
+    return this.model
+      .find(query)
+      .select(hiddenAttrs)
+      .lean();
+  };
+
+  findOneWhere = async (query: any): Promise<T | null> => {
+    return this.model
+      .findOne(query)
+      .select(hiddenAttrs)
+      .lean();
+  };
+
   create = async (item: T): Promise<T> => {
     return this.model.create(item);
   };
