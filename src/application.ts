@@ -1,12 +1,6 @@
-import * as bodyParser from 'body-parser';
-import * as compression from 'compression';
-import * as cors from 'cors';
 import * as express from 'express';
-import * as helmet from 'helmet';
-import * as morgan from 'morgan';
+import { createExpressServer } from 'routing-controllers';
 
-import { errorHandler, notFoundHandler } from './middlewares/errorHandler';
-import routes from './routes';
 import MongoService from './services/MongoService';
 
 export class Application {
@@ -19,32 +13,23 @@ export class Application {
 
   setup(): void {
     this.database();
-    this.middleware();
-    this.routes();
+    this.express();
   }
 
-  // Connect to MongoDB.
+  private express(): void {
+    const controllers = [`${__dirname}/controllers/*`];
+    const middlewares = [`${__dirname}/middlewares/*`];
+
+    this.server = createExpressServer({
+      cors: true,
+      defaultErrorHandler: false,
+      routePrefix: '/api',
+      controllers,
+      middlewares,
+    });
+  }
+
   private database(): void {
     MongoService.connect();
-  }
-
-  // Configure Express middleware.
-  private middleware(): void {
-    this.server.use(helmet());
-
-    this.server.use(bodyParser.urlencoded({ extended: false }));
-    this.server.use(bodyParser.json());
-
-    this.server.use(compression());
-    this.server.use(morgan('dev'));
-    this.server.use(cors());
-  }
-
-  // Configure API endpoints.
-  private routes(): void {
-    this.server.use(routes);
-
-    this.server.use(notFoundHandler);
-    this.server.use(errorHandler);
   }
 }
