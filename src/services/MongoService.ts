@@ -18,7 +18,7 @@ export default class MongoService {
 
       this.instance = await connect(
         config.mongoUri,
-        { useNewUrlParser: true },
+        { useNewUrlParser: true, useCreateIndex: true },
       );
 
       this.instance.connection.once('open', () => {
