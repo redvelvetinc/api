@@ -1,3 +1,6 @@
+import 'dotenv/config';
+import 'reflect-metadata';
+
 import { Application } from './application';
 import config from './config';
 import logger from './utils/logger';

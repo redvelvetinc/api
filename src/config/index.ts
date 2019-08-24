@@ -1,7 +1,4 @@
-import { config } from 'dotenv';
 import { env } from 'process';
-
-config();
 
 export default {
   port: env.PORT ? parseInt(env.PORT, 10) : 3000,
