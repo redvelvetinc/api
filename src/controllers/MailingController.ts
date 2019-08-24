@@ -6,7 +6,7 @@ import { MailingRepository } from './../respository/MailingRepository';
 
 interface HttpResponse {
   success: boolean;
-  data?: IMailing | IMailing[] | undefined;
+  data?: unknown;
   error?: unknown;
 }
 

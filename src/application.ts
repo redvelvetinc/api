@@ -19,6 +19,7 @@ export class Application {
   private express(): void {
     const controllers = [`${__dirname}/controllers/*`];
     const middlewares = [`${__dirname}/middlewares/*`];
+    const interceptors = [`${__dirname}/interceptors/*`];
 
     this.server = createExpressServer({
       cors: true,
@@ -26,6 +27,7 @@ export class Application {
       routePrefix: '/api',
       controllers,
       middlewares,
+      interceptors,
     });
   }
 
