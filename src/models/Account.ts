@@ -18,6 +18,7 @@ const UserSchema = new Schema(
       type: String,
       unique: true,
     },
+    // TODO: Hash the password when save/modify it
     password: {
       required: 'Password cannot be empty.',
       type: String,
