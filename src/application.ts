@@ -17,9 +17,9 @@ export class Application {
   }
 
   private express(): void {
-    const controllers = [`${__dirname}/controllers/*`];
-    const middlewares = [`${__dirname}/middlewares/*`];
-    const interceptors = [`${__dirname}/interceptors/*`];
+    const controllers = [`${__dirname}/api/controllers/*`];
+    const middlewares = [`${__dirname}/api/middlewares/*`];
+    const interceptors = [`${__dirname}/api/interceptors/*`];
 
     this.server = createExpressServer({
       cors: true,

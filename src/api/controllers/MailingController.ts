@@ -1,14 +1,8 @@
 import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put } from 'routing-controllers';
 
-import { IMailing } from '../models/interfaces/IMailing';
-import { IMailingModel } from './../models/Mailing';
-import { MailingRepository } from './../respository/MailingRepository';
-
-interface HttpResponse {
-  success: boolean;
-  data?: unknown;
-  error?: unknown;
-}
+import { IMailing } from '../../models/interfaces/IMailing';
+import { IMailingModel } from '../../models/Mailing';
+import { MailingRepository } from '../../respository/MailingRepository';
 
 @Controller('/mailing')
 export class MailingController {
@@ -19,32 +13,32 @@ export class MailingController {
   }
 
   @Get()
-  async retrieve(): Promise<HttpResponse> {
+  async retrieve(): Promise<IMailing[]> {
     const data = await this.repository.retrieve();
 
-    return { success: true, data };
+    return data;
   }
 
   @Get('/:id')
-  async findById(@Param('id') id: string): Promise<HttpResponse> {
+  async findById(@Param('id') id: string): Promise<IMailing | null> {
     const data = await this.repository.findById(id);
 
-    return { success: true, data };
+    return data;
   }
 
   @HttpCode(201)
   @Post()
-  async create(@Body() user: IMailing): Promise<HttpResponse> {
+  async create(@Body() user: IMailing): Promise<IMailing> {
     const data = await this.repository.create(user as IMailingModel);
 
-    return { success: true, data };
+    return data;
   }
 
   @Put('/:id')
-  async update(@Param('id') id: string, @Body() user: IMailing): Promise<HttpResponse> {
+  async update(@Param('id') id: string, @Body() user: IMailing): Promise<IMailing | null> {
     const data = await this.repository.update(id as string, user as IMailingModel);
 
-    return { success: true, data };
+    return data;
   }
 
   @HttpCode(204)
