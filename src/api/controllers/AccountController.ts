@@ -34,6 +34,18 @@ export class AccountController {
     // TODO: Code...
   }
 
+  /**
+   * This Resource should:
+   * 1. Find Account with token
+   * 2. Set Account as isEmailVerified = true
+   *
+   * @param {string} token
+   */
+  @Get('/confirm-email/:token')
+  confirmEmail(@Param('token') token: string): void {
+    // TODO: Code...
+  }
+
   @Get()
   async retrieve(): Promise<IAccount[]> {
     const data = await this.repository.retrieve();
