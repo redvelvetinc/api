@@ -27,7 +27,7 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
-    "@types/body-parser": "^1.17.0",
+    "@types/body-parser": "^1.17.1",
     "@types/compression": "^1.0.0",
     "@types/cors": "^2.8.5",
     "@types/dotenv": "^6.1.1",
