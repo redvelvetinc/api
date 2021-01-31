@@ -1,7 +1,7 @@
 import * as express from 'express';
 import { createExpressServer } from 'routing-controllers';
 
-import MongoService from './services/MongoService';
+import MongoService from '../_services/MongoService';
 
 export class Application {
   server: express.Application;

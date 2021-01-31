@@ -1,10 +1,12 @@
 {
   "parser": "@typescript-eslint/parser",
   "extends": [
-    "standard",
-    "plugin:@typescript-eslint/recommended",
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:promise/recommended",
     "prettier/@typescript-eslint",
-    "plugin:prettier/recommended",
+    "plugin:prettier/recommended"
   ],
   "plugins": [
     "@typescript-eslint",
@@ -12,17 +14,20 @@
     "prettier"
   ],
   "env": {
-    "node": true
+    "node": true,
+    "es6": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
   },
   "rules": {
-    "curly": ["error", "all"],
-    "prefer-const": "error",
-    "quotes": ["error", "single"],
-    "newline-before-return": "error",
-    "simple-import-sort/sort": "error",
-    "@typescript-eslint/interface-name-prefix": "off",
-    "@typescript-eslint/explicit-member-accessibility": ["error", {
-      "accessibility": "no-public"
-    }]
+    // "newline-before-return": "error",
+    // "simple-import-sort/sort": "error"
+    // "@typescript-eslint/interface-name-prefix": "off",
+    // "@typescript-eslint/explicit-member-accessibility": ["error", {
+      // "accessibility": "no-public"
+    // }]
   }
 }

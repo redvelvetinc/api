@@ -1,4 +1,9 @@
-# Cabaret API
+# red-velvet-api
+
+## Modules
+
+- Identity: Where we have the Users and Auth services
+- Catalog: Where we have the Profiles and its gallery
 
 ## Status
 

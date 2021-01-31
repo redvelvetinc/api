@@ -1,19 +1,19 @@
 import 'dotenv/config';
-import 'reflect-metadata';
 
-import { Application } from './application';
 import config from './config';
+import server from './server';
 import logger from './utils/logger';
 
-async function main() {
-  await new Application().server.listen(config.port, () =>
-    logger.info(`
-    Server start!
-    PID: ${process.pid}
-    HTTP Server: http://localhost:${config.port}
-    MODE: ${config.env}
-    `),
-  );
+async function main(): Promise<void> {
+  await server.listen(config.port);
+  logger.info(`Running at http://localhost:${config.port}`);
 }
+
+process.on('unhandledRejection', (err) => {
+  if (err) {
+    logger.error(err);
+  }
+  process.exit(1);
+});
 
 main();

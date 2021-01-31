@@ -4,7 +4,7 @@ interface HealthResponse {
   status: string;
 }
 
-@Controller('/health')
+@Controller('/_health')
 export class HealthController {
   @Get()
   health(): HealthResponse {

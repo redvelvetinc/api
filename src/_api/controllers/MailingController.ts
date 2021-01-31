@@ -1,8 +1,8 @@
 import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put } from 'routing-controllers';
 
-import { IMailing } from '../../models/interfaces/IMailing';
-import { IMailingModel } from '../../models/Mailing';
-import { MailingRepository } from '../../respository/MailingRepository';
+import { IMailing } from '../../_models/interfaces/IMailing';
+import { IMailingModel } from '../../_models/Mailing';
+import { MailingRepository } from '../../_respository/MailingRepository';
 
 @Controller('/mailing')
 export class MailingController {

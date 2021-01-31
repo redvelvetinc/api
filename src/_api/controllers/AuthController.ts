@@ -1,6 +1,6 @@
 import { Body, Controller, Get, HeaderParam, Param, Post } from 'routing-controllers';
 
-import { IAccount } from '../../models/interfaces/IAccount';
+import { IAccount } from '../../_models/interfaces/IAccount';
 
 @Controller('/auth')
 export class AccountController {

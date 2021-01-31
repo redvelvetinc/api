@@ -1,7 +1,7 @@
 import { Document, Model } from 'mongoose';
 
+import { IRead } from '../interfaces/Read';
 import { IWrite } from '../interfaces/Write';
-import { IRead } from './../interfaces/Read';
 
 const hiddenAttrs = {
   __v: 0,

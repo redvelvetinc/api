@@ -10,9 +10,9 @@ import {
   Put,
 } from 'routing-controllers';
 
-import { IAccountModel } from '../../models/Account';
-import { IAccount } from '../../models/interfaces/IAccount';
-import { AccountRepository } from '../../respository/AccountRepository';
+import { IAccount } from '../../_models/interfaces/IAccount';
+import { IAccountModel } from '../../_models/User';
+import { AccountRepository } from '../../_respository/UserRepository';
 
 @Controller('/account')
 export class AccountController {

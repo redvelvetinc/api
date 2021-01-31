@@ -1,15 +1,30 @@
 import { Document, model, Schema } from 'mongoose';
 
 import config from '../config';
-import { IAccount } from './interfaces/IAccount';
 
-enum AccountTypes {
+export interface IUser {
+  email: string;
+  password: string;
+  acceptedTerms: boolean;
+  accountType: UserTypes;
+  isEmailVerified: boolean;
+  token: string;
+  personalProfile: {
+    firstName: string;
+    lastName: string;
+    birthDate: Date;
+    cpf: string;
+    mobile: string;
+  };
+}
+
+enum UserTypes {
   ADMIN = 'ADMIN',
   AGENCY = 'AGENCY',
   SINGLE = 'SINGLE',
 }
 
-export interface IAccountModel extends IAccount, Document {}
+export interface IUserModel extends IUser, Document {}
 
 const UserSchema = new Schema(
   {
@@ -29,11 +44,11 @@ const UserSchema = new Schema(
     },
     accountType: {
       type: String,
-      enum: [AccountTypes.ADMIN, AccountTypes.AGENCY, AccountTypes.SINGLE],
-      default: AccountTypes.SINGLE,
+      enum: [UserTypes.ADMIN, UserTypes.AGENCY, UserTypes.SINGLE],
+      default: UserTypes.SINGLE,
       validate: {
         validator: (value: string): boolean => {
-          if (value !== AccountTypes.ADMIN) {
+          if (value !== UserTypes.ADMIN) {
             return true;
           }
 
@@ -49,8 +64,12 @@ const UserSchema = new Schema(
       type: String,
     },
     personalProfile: {
-      name: {
-        required: 'Name cannot be empty.',
+      firstName: {
+        required: 'First name cannot be empty.',
+        type: String,
+      },
+      lastName: {
+        required: 'Last name cannot be empty.',
         type: String,
       },
       birthDate: {
@@ -74,4 +93,4 @@ const UserSchema = new Schema(
   { timestamps: true },
 );
 
-export const Account = model<IAccountModel>('account', UserSchema);
+export const User = model<IUserModel>('user', UserSchema);
