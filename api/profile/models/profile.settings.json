@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "profiles",
+  "info": {
+    "name": "Profile",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "string",
+      "required": false,
+      "unique": true
+    },
+    "website": {
+      "type": "string"
+    },
+    "mobile": {
+      "type": "biginteger",
+      "required": true
+    },
+    "birthDate": {
+      "type": "date"
+    },
+    "category": {
+      "model": "category",
+      "via": "profiles"
+    },
+    "city": {
+      "model": "city",
+      "via": "profiles"
+    },
+    "tags": {
+      "collection": "tags"
+    },
+    "active": {
+      "type": "boolean",
+      "default": false,
+      "private": false
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "gallery": {
+      "model": "gallery"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "galleries",
+  "info": {
+    "name": "Gallery",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "cover": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "name": {
+      "type": "string",
+      "unique": false
+    }
+  }
+}
