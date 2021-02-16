@@ -7,7 +7,7 @@ module.exports = ({ env }) => ({
         uri: env('DATABASE_URI'),
       },
       options: {
-        ssl: true,
+        ssl: env.bool("DATABASE_SSL", false),
       },
     },
   },
