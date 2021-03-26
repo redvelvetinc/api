@@ -3598,6 +3598,11 @@ dataloader@^1.4.0:
   resolved "https://registry.yarnpkg.com/dataloader/-/dataloader-1.4.0.tgz#bca11d867f5d3f1b9ed9f737bd15970c65dff5c8"
   integrity sha512-68s5jYdlvasItOJnCuI2Q9s4q98g0pCyL3HrcKJu8KNugUl8ahgmZYg38ysLTgQjjXX3H8CJLkAvWrclWfcalw==
 
+date-fns@^2.19.0:
+  version "2.19.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.19.0.tgz#65193348635a28d5d916c43ec7ce6fbd145059e1"
+  integrity sha512-X3bf2iTPgCAQp9wvjOQytnf5vO5rESYRXlPIVcgSbtT5OTScPcsf9eZU+B/YIkKAtYr5WeCii58BgATrNitlWg==
+
 date-fns@^2.8.1:
   version "2.17.0"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.17.0.tgz#afa55daea539239db0a64e236ce716ef3d681ba1"
@@ -9935,10 +9940,10 @@ strapi-connector-bookshelf@3.4.6:
     rimraf "3.0.2"
     strapi-utils "3.4.6"
 
-strapi-connector-mongoose@^3.5.1:
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/strapi-connector-mongoose/-/strapi-connector-mongoose-3.5.1.tgz#5fba99bec6f3dd54cb70ccf287a0f3155550bc0e"
-  integrity sha512-zqRq6+D0Tgb65+o2lNy7zKLv3lQRjj0CrFSZPK2MaDGxkrhG9BNlBC6bpAzVdnT+Q7tXzjYgbxQGxGKF5Rs8SA==
+strapi-connector-mongoose@^3.5.4:
+  version "3.5.4"
+  resolved "https://registry.yarnpkg.com/strapi-connector-mongoose/-/strapi-connector-mongoose-3.5.4.tgz#bbcc4844f885665b2d104d59fe77201eeec2af44"
+  integrity sha512-WJ2nWkDPyu9Kbg/4SPv10sHyDmfk3Htc/+Llqd0anFolut/ieqChKkcqn3cRCExiDfUyD/3z8+LOhBTeKJUM+w==
   dependencies:
     lodash "4.17.20"
     mongoose "5.10.8"
@@ -9946,7 +9951,7 @@ strapi-connector-mongoose@^3.5.1:
     mongoose-long "^0.3.2"
     pluralize "^8.0.0"
     semver "^7.3.4"
-    strapi-utils "3.5.1"
+    strapi-utils "3.5.4"
 
 strapi-database@3.4.6:
   version "3.4.6"
@@ -10267,13 +10272,13 @@ strapi-utils@3.4.6:
     pluralize "^8.0.0"
     yup "0.29.3"
 
-strapi-utils@3.5.1:
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/strapi-utils/-/strapi-utils-3.5.1.tgz#732d9965617c1630264eac381e5840556c557c40"
-  integrity sha512-jvxTBAUb9OtLHIqh9qxajgAgDiwo35kvbrIudaf3Sz9zXqjyZEvv9zPN7LNPkRuhEkzzKg+zaqN8VP9Ezaf7og==
+strapi-utils@3.5.4:
+  version "3.5.4"
+  resolved "https://registry.yarnpkg.com/strapi-utils/-/strapi-utils-3.5.4.tgz#976420af6a0bad888c3d5ffe0f707cc7bc63264e"
+  integrity sha512-+8/x6hW07F9yVGYi3ZS3hIxxNODIS5UX745bMXN36m/CF0L4bmsQGVxr09evD+DErOoZ0VGEv9NeO7yFiHvE9Q==
   dependencies:
     "@sindresorhus/slugify" "1.1.0"
-    date-fns "^2.8.1"
+    date-fns "^2.19.0"
     lodash "4.17.20"
     pino "^4.7.1"
     pluralize "^8.0.0"
