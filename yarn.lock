@@ -3598,6 +3598,11 @@ dataloader@^1.4.0:
   resolved "https://registry.yarnpkg.com/dataloader/-/dataloader-1.4.0.tgz#bca11d867f5d3f1b9ed9f737bd15970c65dff5c8"
   integrity sha512-68s5jYdlvasItOJnCuI2Q9s4q98g0pCyL3HrcKJu8KNugUl8ahgmZYg38ysLTgQjjXX3H8CJLkAvWrclWfcalw==
 
+date-fns@^2.19.0:
+  version "2.21.1"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.21.1.tgz#679a4ccaa584c0706ea70b3fa92262ac3009d2b0"
+  integrity sha512-m1WR0xGiC6j6jNFAyW4Nvh4WxAi4JF4w9jRJwSI8nBmNcyZXPcP9VUQG+6gHQXAmqaGEKDKhOqAtENDC941UkA==
+
 date-fns@^2.8.1:
   version "2.17.0"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.17.0.tgz#afa55daea539239db0a64e236ce716ef3d681ba1"
@@ -6651,6 +6656,11 @@ lodash@4.17.20, lodash@^4.1.1, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.14
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
 
+lodash@4.17.21:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
+
 log-symbols@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-2.2.0.tgz#5740e1c5d6f0dfda4ad9323b5332107ef6b4c40a"
@@ -9367,6 +9377,13 @@ semver@^6.0.0, semver@^6.2.0, semver@^6.3.0:
   resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
   integrity sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
 
+semver@^7.3.5:
+  version "7.3.5"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-7.3.5.tgz#0b621c879348d8998e4b0e4be94b3f12e6018ef7"
+  integrity sha512-PoeGJYh8HK4BTO/a9Tf6ZG3veo/A7ZVsYrSA6J8ny9nb3B1VrpkuN+z9OE5wfE5p6H4LchYZsegiQgbJD94ZFQ==
+  dependencies:
+    lru-cache "^6.0.0"
+
 semver@~5.3.0:
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.3.0.tgz#9b2ce5d3de02d17c6012ad326aa6b4d0cf54f94f"
@@ -9935,18 +9952,19 @@ strapi-connector-bookshelf@3.4.6:
     rimraf "3.0.2"
     strapi-utils "3.4.6"
 
-strapi-connector-mongoose@^3.5.1:
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/strapi-connector-mongoose/-/strapi-connector-mongoose-3.5.1.tgz#5fba99bec6f3dd54cb70ccf287a0f3155550bc0e"
-  integrity sha512-zqRq6+D0Tgb65+o2lNy7zKLv3lQRjj0CrFSZPK2MaDGxkrhG9BNlBC6bpAzVdnT+Q7tXzjYgbxQGxGKF5Rs8SA==
+strapi-connector-mongoose@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/strapi-connector-mongoose/-/strapi-connector-mongoose-3.6.0.tgz#057f464440df3ff9f77f189c21187a9d54f79dd1"
+  integrity sha512-ZdsgfQZklhoU45tDa5fAC5DPQjhev4+R6vMzK4tHDA9avbgXw/DwBnyvxrYePxeh1k0x1e53O4c+IzyvsFhb5w==
   dependencies:
-    lodash "4.17.20"
+    lodash "4.17.21"
     mongoose "5.10.8"
     mongoose-float "^1.0.4"
     mongoose-long "^0.3.2"
+    p-map "4.0.0"
     pluralize "^8.0.0"
-    semver "^7.3.4"
-    strapi-utils "3.5.1"
+    semver "^7.3.5"
+    strapi-utils "3.6.0"
 
 strapi-database@3.4.6:
   version "3.4.6"
@@ -10267,14 +10285,14 @@ strapi-utils@3.4.6:
     pluralize "^8.0.0"
     yup "0.29.3"
 
-strapi-utils@3.5.1:
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/strapi-utils/-/strapi-utils-3.5.1.tgz#732d9965617c1630264eac381e5840556c557c40"
-  integrity sha512-jvxTBAUb9OtLHIqh9qxajgAgDiwo35kvbrIudaf3Sz9zXqjyZEvv9zPN7LNPkRuhEkzzKg+zaqN8VP9Ezaf7og==
+strapi-utils@3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/strapi-utils/-/strapi-utils-3.6.0.tgz#0b608c95170dd2687d6ab93845cfa007d27d08d2"
+  integrity sha512-UgXejSAgOGKsN99c7B/dslV5UJTFIxHXYOKlKEomQWLvK3cUxqN4T9maUxbncyyMvZ/QIvUkyjRuRv71DndNbg==
   dependencies:
     "@sindresorhus/slugify" "1.1.0"
-    date-fns "^2.8.1"
-    lodash "4.17.20"
+    date-fns "^2.19.0"
+    lodash "4.17.21"
     pino "^4.7.1"
     pluralize "^8.0.0"
     yup "0.29.3"
