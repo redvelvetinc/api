@@ -49,8 +49,8 @@
     "description": {
       "type": "richtext"
     },
-    "gallery": {
-      "model": "gallery"
+    "galleries": {
+      "collection": "gallery"
     }
   }
 }
