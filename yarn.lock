@@ -10423,6 +10423,38 @@ strapi-helper-plugin@3.6.2:
     styled-components "^5.2.3"
     whatwg-fetch "^3.6.2"
 
+strapi-helper-plugin@3.6.3:
+  version "3.6.3"
+  resolved "https://registry.yarnpkg.com/strapi-helper-plugin/-/strapi-helper-plugin-3.6.3.tgz#ed8ac1d1c3bc345b9a30209f93be1a15c85fc4ea"
+  integrity sha512-f4/9NzzjtSfwBOC5J8sy66my92EbV1v8Pi5Ne3y4kFs7LiC6IBxHPX/sTT/FwxmR65yD5tx0kO10q5xkZ5KCiA==
+  dependencies:
+    "@buffetjs/core" "3.3.6"
+    "@buffetjs/custom" "3.3.6"
+    "@buffetjs/hooks" "3.3.6"
+    "@buffetjs/icons" "3.3.6"
+    "@buffetjs/styles" "3.3.6"
+    "@buffetjs/utils" "3.3.6"
+    "@fortawesome/fontawesome-free" "^5.15.2"
+    "@fortawesome/fontawesome-svg-core" "^1.2.35"
+    "@fortawesome/free-brands-svg-icons" "^5.15.2"
+    "@fortawesome/free-solid-svg-icons" "^5.15.3"
+    "@fortawesome/react-fontawesome" "^0.1.14"
+    bootstrap "^4.6.0"
+    classnames "^2.3.1"
+    immutable "^3.8.2"
+    invariant "^2.2.1"
+    lodash "4.17.21"
+    moment "^2.29.1"
+    react "^16.14.0"
+    react-dom "^16.9.0"
+    react-helmet "^6.1.0"
+    react-intl "4.5.0"
+    react-router "^5.2.0"
+    react-router-dom "^5.0.0"
+    reactstrap "8.4.1"
+    styled-components "^5.2.3"
+    whatwg-fetch "^3.6.2"
+
 strapi-plugin-content-manager@^3.6.2:
   version "3.6.2"
   resolved "https://registry.yarnpkg.com/strapi-plugin-content-manager/-/strapi-plugin-content-manager-3.6.2.tgz#3ac0b3e9d63d8eeb97d41cba82e91c40562d4122"
@@ -10500,10 +10532,10 @@ strapi-plugin-content-type-builder@^3.6.2:
     strapi-utils "3.6.2"
     yup "^0.27.0"
 
-strapi-plugin-documentation@^3.6.2:
-  version "3.6.2"
-  resolved "https://registry.yarnpkg.com/strapi-plugin-documentation/-/strapi-plugin-documentation-3.6.2.tgz#bb5024bb195525f2e7ca5879dc6d33f631ad9399"
-  integrity sha512-rMGT77iNuXXj7PZ/2gcn1+W+5dH1+hpUZPrj6kh88AcbfWtxl57kVxDg/DEbYqgtEHYE/gsgJlhpbYsnH+WRuA==
+strapi-plugin-documentation@^3.6.3:
+  version "3.6.3"
+  resolved "https://registry.yarnpkg.com/strapi-plugin-documentation/-/strapi-plugin-documentation-3.6.3.tgz#e0a036dd025c3cdc45b28685f2adb9b40dcf4a62"
+  integrity sha512-kYJqI0l+77C9h7vmhP81V6xbAZgGdEEQXHfMXzCKQ4fgknM/fSK1gqYXQJFf6qEywEUcEmBBDch1VxM4XEsCdA==
   dependencies:
     "@buffetjs/core" "3.3.6"
     "@buffetjs/custom" "3.3.6"
@@ -10529,7 +10561,7 @@ strapi-plugin-documentation@^3.6.2:
     redux "^4.0.1"
     redux-immutable "^4.0.0"
     reselect "^4.0.0"
-    strapi-helper-plugin "3.6.2"
+    strapi-helper-plugin "3.6.3"
     swagger-ui-dist "3.47.1"
 
 strapi-plugin-email@^3.6.2:
